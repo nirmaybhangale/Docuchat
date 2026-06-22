@@ -18,7 +18,7 @@ export default function Home() {
     setLoading(true);
     setQuestion("");
 
-    const response = await fetch("http://127.0.0.1:8000/ask", {
+    const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/ask`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ question: askedQuestion }),
@@ -40,7 +40,7 @@ export default function Home() {
     const formData = new FormData();
     formData.append("file", file);
 
-    const response = await fetch("http://127.0.0.1:8000/upload", {
+    const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/upload`, {
       method: "POST",
       body: formData,
     });
